@@ -151,13 +151,92 @@ graph LR
 - Ollama
 - LangGraph Studio (optional, for visual workflow management)
 
-### Running with Docker
+### 🐳 Docker Deployment
+
+### Quick Start with Docker
 
 ```bash
 # Build and start the container
 docker-compose up --build
 
-# Access LangGraph Studio at http://localhost:8000
+# The API will be available at:
+# - API: http://localhost:8000
+```
+
+### API Endpoints
+
+#### Generate Post
+```bash
+curl -X POST http://localhost:8000/generate \
+  -H "Content-Type: application/json" \
+  -d '{
+    "text": "We are launching a new AI product that revolutionizes data analysis",
+    "target_audience": "Tech leaders and CTOs",
+    "n_drafts": 3
+  }'
+```
+
+Response:
+```json
+{
+  "final_post": "...",
+  "all_versions": [
+    {
+      "version": 1,
+      "content": "...",
+      "feedback": null
+    },
+    {
+      "version": 2,
+      "content": "...",
+      "feedback": "..."
+    }
+  ],
+  "workflow_status": "completed"
+}
+```
+
+#### Health Check
+```bash
+curl http://localhost:8000/health
+```
+
+### Docker Configuration
+
+The application runs in a self-contained Docker environment that includes:
+
+- FastAPI application
+- Ollama LLM
+- All required dependencies
+
+Key features:
+
+- Persistent model storage
+- Health monitoring
+- Automatic model download
+- Environment variable configuration
+
+### Environment Variables
+
+```env
+DOCKER_CONTAINER=true
+OLLAMA_BASE_URL=http://localhost:11434
+```
+
+### Container Management
+
+```bash
+# Start containers
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop containers
+docker-compose down
+
+# Rebuild after changes
+docker-compose up --build
 ```
 
 ### Manual Installation
