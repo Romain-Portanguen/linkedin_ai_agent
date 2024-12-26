@@ -373,6 +373,6 @@ This is a proof of concept for educational purposes. While it demonstrates inter
 ## 📚 Resources
 
 - [LangGraph Documentation](https://python.langchain.com/docs/langgraph)
-- [Ollama Documentation](https://ollama.com/docs)
-- [LinkedIn Content Best Practices](https://www.linkedin.com/help/linkedin/answer/a548360)
+- [Ollama Documentation](https://ollama.com/)
+- [LinkedIn Content Best Practices](https://members.linkedin.com/create)
 
