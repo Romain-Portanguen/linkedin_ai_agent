@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  linkedin-agent:
+    build: .
+    ports:
+      - "8000:8000"  # FastAPI
+      - "11434:11434"  # Ollama API
+    volumes:
+      - ollama-models:/root/.ollama
+    environment:
+      - DOCKER_CONTAINER=true
+      - OLLAMA_BASE_URL=http://localhost:11434
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  ollama-models:

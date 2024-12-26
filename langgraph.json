@@ -1,0 +1,13 @@
+{
+  "dockerfile_lines": [],
+  "graphs": {
+    "linkedin_workflow": "src.main:build_linkedin_workflow"
+  },
+  "python_version": "3.11",
+  "dependencies": [
+    "."
+  ],
+  "env": {
+    "OLLAMA_BASE_URL": "http://host.docker.internal:11434"
+  }
+} 
