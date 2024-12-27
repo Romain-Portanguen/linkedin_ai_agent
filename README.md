@@ -48,6 +48,7 @@ The API will be available at http://localhost:8000
 ### Endpoints
 
 #### Generate Post
+
 ```bash
 curl -X POST http://localhost:8000/generate \
   -H "Content-Type: application/json" \
@@ -59,6 +60,7 @@ curl -X POST http://localhost:8000/generate \
 ```
 
 Response:
+
 ```json
 {
   "final_post": "...",
@@ -74,11 +76,13 @@ Response:
 ```
 
 #### Health Check
+
 ```bash
 curl http://localhost:8000/health
 ```
 
 Response:
+
 ```json
 {
   "status": "healthy",
@@ -126,6 +130,7 @@ docker-compose up --build
 ```
 
 ### Features
+
 - Self-contained environment with all dependencies
 - Automatic model download during build
 - Persistent model storage
@@ -133,11 +138,13 @@ docker-compose up --build
 - Automatic service orchestration
 
 ### Environment Variables
+
 ```env
 OLLAMA_BASE_URL=http://localhost:11434
 ```
 
 ### Container Management
+
 ```bash
 # View logs
 docker-compose logs -f
@@ -177,6 +184,7 @@ docker-compose down -v
 ### Configuration
 
 Key parameters in `src/utils/constants.py`:
+
 ```python
 OLLAMA_MODEL = "llama3:latest"
 OLLAMA_TEMPERATURE = 0.7
