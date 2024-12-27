@@ -1,5 +1,5 @@
 # Base image with Python and Ollama
-FROM ollama/ollama:latest as ollama
+FROM ollama/ollama:latest AS ollama
 
 # Final image
 FROM python:3.11-slim
@@ -10,20 +10,17 @@ COPY --from=ollama /usr/bin/ollama /usr/bin/ollama
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies and uv
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
   curl \
-  && rm -rf /var/lib/apt/lists/* \
-  && curl -LsSf https://astral.sh/uv/install.sh | sh
+  procps \
+  && rm -rf /var/lib/apt/lists/*
 
-# Copy only dependency files first
-COPY pyproject.toml .
-
-# Install dependencies with uv
-RUN uv pip sync pyproject.toml
-
-# Copy rest of the project files
+# Copy project files
 COPY . .
+
+# Install dependencies
+RUN pip install --no-cache-dir .
 
 # Download Ollama model
 RUN ollama serve & \

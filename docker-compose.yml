@@ -9,7 +9,8 @@ services:
     volumes:
       - ollama-models:/root/.ollama
     environment:
-      - OLLAMA_BASE_URL=http://localhost:11434
+      - DOCKER_CONTAINER=true
+      - OLLAMA_BASE_URL=http://127.0.0.1:11434
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
