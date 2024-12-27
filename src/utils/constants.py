@@ -1,9 +1,13 @@
+"""
+Constants used throughout the application
+"""
+
 import os
 
 # API Configuration
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-OLLAMA_MODEL = "llama3"
-OLLAMA_TEMPERATURE = 0
+OLLAMA_MODEL = "llama3:latest"
+OLLAMA_TEMPERATURE = 0.7
 
 # Workflow Configuration
 DEFAULT_N_DRAFTS = 3

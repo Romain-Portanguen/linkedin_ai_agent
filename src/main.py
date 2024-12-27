@@ -4,9 +4,9 @@ Provides high-level functions to interact with the workflow.
 """
 
 from typing import Dict, Any
-from .models.state import OverallState
-from .workflow import build_linkedin_workflow
-from .services.linkedin_agent import LinkedInAgent
+from src.models.state import OverallState
+from src.workflow import build_linkedin_workflow
+from src.services.linkedin_agent import LinkedInAgent
 
 def generate_linkedin_post(
     text: str,
@@ -28,18 +28,20 @@ def generate_linkedin_post(
     workflow = build_linkedin_workflow()
     
     # Prepare initial state
-    initial_state: OverallState = {
+    initial_state = {
         "user_text": text,
         "target_audience": target_audience,
         "edit_text": "",
-        "linkedin_post": {},
+        "linkedin_post": {"drafts": [], "feedback": None},
         "n_drafts": n_drafts,
         "workflow_status": "starting"
     }
     
     # Run workflow
     result = workflow.invoke(initial_state)
-    
+    if result is None:
+        return None
+        
     # Create agent to access results
     agent = LinkedInAgent()
     

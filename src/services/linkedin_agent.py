@@ -1,16 +1,16 @@
 from typing import Dict, Any, Union, List
 from langchain_community.llms import Ollama
 from langchain_core.messages import HumanMessage, SystemMessage
-from utils.constants import (
+from src.utils.constants import (
     OLLAMA_BASE_URL, 
     OLLAMA_MODEL, 
     OLLAMA_TEMPERATURE,
     DEFAULT_N_DRAFTS
 )
-from utils.logger import logger
-from utils.prompts import EDITOR_PROMPT, LINKEDIN_PROMPT, LINKEDIN_CRITIQUE_PROMPT
-from models.post import Post
-from models.state import OverallState, WorkflowStatus
+from src.utils.logger import logger
+from src.utils.prompts import EDITOR_PROMPT, LINKEDIN_PROMPT, LINKEDIN_CRITIQUE_PROMPT
+from src.models.post import Post
+from src.models.state import OverallState, WorkflowStatus
 from langgraph.graph import END
 
 class LinkedInAgent:

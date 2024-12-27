@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from utils.constants import DEFAULT_N_DRAFTS
+from src.utils.constants import DEFAULT_N_DRAFTS
 
 class Configuration(BaseModel):
     """Configuration parameters"""
