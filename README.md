@@ -117,18 +117,36 @@ Response:
 ### Quick Start with Docker
 
 ```bash
-# Build and start the container
+# Build and start services
 docker-compose up --build
 
-# The API will be available at:
+# The services will be available at:
 # - API: http://localhost:8000
+# - Ollama: http://localhost:11434
 ```
 
-### Environment Variables
+### Features
+- Self-contained environment with all dependencies
+- Automatic model download during build
+- Persistent model storage
+- Health monitoring
+- Automatic service orchestration
 
+### Environment Variables
 ```env
-DOCKER_CONTAINER=true
 OLLAMA_BASE_URL=http://localhost:11434
+```
+
+### Container Management
+```bash
+# View logs
+docker-compose logs -f
+
+# Stop services
+docker-compose down
+
+# Remove volumes (will delete downloaded models)
+docker-compose down -v
 ```
 
 ## 🏗 Technical Architecture
